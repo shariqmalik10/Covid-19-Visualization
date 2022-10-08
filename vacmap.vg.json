@@ -1,6 +1,6 @@
 {   
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "People Vaccinated Per 1000 Worldwide",
+    "title": "People Vaccinated Per 100 Worldwide",
     "width": 800,
     "height": 400,
     "projection":{"type": "equalEarth"},
@@ -40,22 +40,21 @@
                         "url": "https://raw.githubusercontent.com/shariqmalik10/Assignment2-Visualization-VegaLite/master/data/peoplevac_country_vaccine.csv"
                     },
                     "key": "country",
-                    "fields": ["people_vaccinated_per_1000"]
+                    "fields": ["people_vaccinated_per_hundred"]
                 }
             },
-            {"calculate": "datum.people_vaccinated_per_1000", "as": "Total Vaccinations Per 1000"}
+            {"calculate": "datum.people_vaccinated_per_hundred", "as": "Total Vaccinations Per 100"}
         ],
         "mark": {"type": "geoshape", "stroke": "grey"},
         "encoding": {
             "color":{
-                "field": "Total Vaccinations Per 1000", 
-                "type": "quantitative",
-                "scale": {"type": "log"}
+                "field": "Total Vaccinations Per 100", 
+                "type": "quantitative"
             },
             
             "tooltip": [
             {"field": "properties.NAME", "type": "nominal", "title": "Country"},
-            {"field": "Total Vaccinations Per 1000", "type": "quantitative"}
+            {"field": "Total Vaccinations Per 100", "type": "quantitative"}
           ]
         }
         
