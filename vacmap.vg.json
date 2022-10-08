@@ -14,28 +14,25 @@
                 "url":"https://raw.githubusercontent.com/shariqmalik10/Assignment2-Visualization-VegaLite/master/js/ne_110m_graticules_30.topojson",
                 "format":{"type": "topojson", "feature": "ne_110m_graticules_30"}
             },
-            "projection":{
-                "type": "equalEarth"
-            },
-            "mark":{"type": "geoshape", "fill": null, "stroke":"white"}
+            "mark":{"type": "geoshape", "fill": null, "stroke":"lightslategrey"}
         },
         {
             "data":{
                 "url":"https://raw.githubusercontent.com/shariqmalik10/Assignment2-Visualization-VegaLite/master/js/ne_110m_admin_0_countries.topojson",
                 "format":{"type": "topojson", "feature": "ne_110m_admin_0_countries"}
             },
-            "projection":{
-                "type": "equalEarth"
-            },
-            "mark":{"type": "geoshape", "fill": "lightgray", "stroke":"whitesmoke"}
+            "mark":{"type": "geoshape", "fill": "lightgray", "stroke":"white"},
+            "transform": [
+        {"calculate": "'Data unavailable for  ' + datum.properties.NAME", "as": "MissedData"}
+      ],
+      "encoding": {"tooltip": {"field": "MissedData"}}
         },
         {
             "data":{
                 "url":"https://raw.githubusercontent.com/shariqmalik10/Assignment2-Visualization-VegaLite/master/js/ne_110m_admin_0_countries.topojson",
                 "format":{"type": "topojson", "feature": "ne_110m_admin_0_countries"}
-            }
-        },
-        "transform": [
+            },
+            "transform": [
             {
                 "lookup": "properties.NAME",
                 "from":{
@@ -46,16 +43,26 @@
                     "fields": ["total_vaccinations"]
                 }
             },
+            {"calculate": "datum.total_vaccinations", "as": "Total Vaccinations"}
         ],
-        "mark": {"type": "geoshape"},
+        "mark": {"type": "geoshape", "stroke": "grey"},
         "encoding": {
             "color":{
-                "field": "total_vaccinations", 
-                "type": "quantitative"
+                "field": "Total Vaccinations", 
+                "type": "quantitative",
+                "scale": {"type": "log"}
+            },
+            
+            "tooltip": [
+            {"field": "properties.NAME", "type": "nominal", "title": "Country"},
+            {"field": "total_vaccinations", "type": "quantitative"}
+          ]
         }
-        }
+        
 
-
+      }
 
     ]
+        
+        
 }
