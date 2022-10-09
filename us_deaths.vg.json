@@ -1,0 +1,53 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Deaths due to COVID-19 in the US",
+    "width": 750,
+    "height": 400,
+    "background": "aliceblue",
+    "projection": {"type": "albersUsa"},
+    "layer":[
+      {
+        "data":{
+        "url":"https://raw.githubusercontent.com/shariqmalik10/Assignment2-Visualization-VegaLite/master/js/us-10m.json",
+        "format": {"type": "topojson", "feature": "states"}
+        },
+       "transform": [
+         {
+           "lookup": "id",
+           "from":{
+             "data":{
+               "url":"https://raw.githubusercontent.com/shariqmalik10/Assignment2-Visualization-VegaLite/master/data/USA_covid_cleaned.csv"
+             },
+             "key": "index",
+             "fields": ["index", "State", "Total Deaths", "Total Cases", "Active Cases"]
+           }
+         },
+         {"calculate": "datum.State", "as": "State Name"}
+       ],
+       "mark": {"type":"geoshape", "stroke": "grey"},
+       "encoding": {
+         "color":{
+           "field":"Total Deaths",
+           "type": "quantitative",
+           "scale": {"scheme": "reds"}
+          },
+          "tooltip": [
+            {"field": "State Name", "type": "nominal", "title": "State"},
+            {"field": "Total Deaths", "type": "quantitative"},
+            {"field": "Total Cases", "type": "quantitative"},
+            {"field": "Active Cases", "type": "quantitative"}
+          ]
+       }
+      
+      }
+      
+
+
+    ]
+    
+    
+    
+       
+
+    
+}
