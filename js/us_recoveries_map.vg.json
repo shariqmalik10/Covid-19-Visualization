@@ -1,0 +1,58 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+      "text": "Recoveries from COVID-19 in the US",
+      "fontSize": 18,
+      "dy": -17
+    },
+    "width": 750,
+    "height": 400,
+    "background": "lightblue",
+    "projection": {"type": "albersUsa"},
+    "layer":[
+      {
+        "data":{
+        "url":"https://raw.githubusercontent.com/shariqmalik10/Assignment2-Visualization-VegaLite/master/js/us-10m.json",
+        "format": {"type": "topojson", "feature": "states"}
+        },
+       "transform": [
+         {
+           "lookup": "id",
+           "from":{
+             "data":{
+               "url":"https://raw.githubusercontent.com/shariqmalik10/Assignment2-Visualization-VegaLite/master/data/USA_covid_cleaned.csv"
+             },
+             "key": "index",
+             "fields": ["index", "State", "Total Recovered", "Active Cases"]
+           }
+         },
+         {"calculate": "datum.State", "as": "State Name"},
+         {"calculate": "datum['Total Recovered']", "as": "Total Recoveries"}
+
+       ],
+       "mark": {"type":"geoshape", "stroke": "grey"},
+       "encoding": {
+         "color":{
+           "field":"Total Recoveries",
+           "type": "quantitative",
+           "scale": {"scheme": "greens"}
+          },
+          "tooltip": [
+            {"field": "State Name", "type": "nominal", "title": "State"},
+            {"field": "Total Recoveries", "type": "quantitative","format": ","},
+            {"field": "Active Cases", "type": "quantitative", "format":","}
+          ]
+       }
+      
+      }
+      
+
+
+    ]
+    
+    
+    
+       
+
+    
+}

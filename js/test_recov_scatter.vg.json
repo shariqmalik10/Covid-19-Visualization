@@ -1,0 +1,162 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+        "text": "Does more testing mean more recoveries ?",
+        "fontSize": 18,
+        "dy": -17
+    },
+    "description": "A scatterplot to show the relationship between testing and recoveries",
+    "width": 750,
+    "height": 400,
+    "background":"lightblue",
+    "data":{
+        "url": "https://raw.githubusercontent.com/shariqmalik10/Assignment2-Visualization-VegaLite/master/data/USA_covid_cleaned.csv"
+    },
+    "params": [
+        {
+            "name":"Population_greater",
+            "value": 0,
+            "bind":{
+                "name": "Min Population: ",
+                "input": "range",
+                "min": 0,
+                "max": 40000000,
+                "step": 100000
+            }
+        }
+    ],
+    "transform": [
+        {"filter": "datum.Population > Population_greater"}
+    ],
+    "encoding": {
+        "x":{
+            "field": "Total Tests",
+            "type": "quantitative",
+            "axis": {"grid": false}
+        },
+        "y":{
+            "field": "Total Recovered",
+            "type": "quantitative",
+            "axis": {"grid": false}
+        }
+    },
+    "layer":[
+      {
+        "mark": "point",
+        "encoding": {
+          "size":{
+            "field":"Population",
+            "type": "quantitative",
+            "scale": {
+              "type": "threshold",
+              "domain": [100000, 1000000, 2000000, 30000000, 40000000],
+              "range": [10, 50, 150, 250, 350, 450]
+            },
+            "legend": {
+                "legendY": 300,
+                "format": ".1s",
+                "orient": "bottom"
+            }
+          },
+          "tooltip": [
+            {"field": "State", "type": "nominal", "title": "State Name"},
+            {"field": "Population", "type": "quantitative", "format":","},
+            {"field": "Total Tests", "type": "quantitative", "format": ","},
+            {"field": "Total Recovered", "type": "quantitative", "title": "Total Recoveries", "format":","},
+            {"field": "Active Cases", "type": "quantitative", "format":","}
+          ]     
+        }
+      },
+      {
+        "mark":{
+            "type": "text",
+            "align": "right",
+            "baseline": "middle",
+            "dx": 2.7,
+            "dy": 13,
+            "fontSize": 11,
+            "fontStyle": "italic",
+            "fontWeight":"bold"
+        },
+        "encoding": {
+            "text":{
+                "field": "State",
+                "type": "nominal"
+            },
+            "color":{
+                "value": "black"
+            },
+            "opacity":{
+                "condition":{
+                    "test": "datum['State']=='Tennessee' || datum['State']=='Massachusetts' || datum['State'] == 'Florida' || datum['State'] == 'New York' ",
+                    "value": 1
+                },
+                "value": 0 
+            },
+            "tooltip": [
+                {"field": "State", "type": "nominal", "title": "State Name"},
+                {"field": "Population", "type": "quantitative", "format":","},
+                {"field": "Total Tests", "type": "quantitative", "format": ","},
+                {"field": "Total Recovered", "type": "quantitative", "title": "Total Recoveries", "format":","},
+                {"field": "Active Cases", "type": "quantitative", "format":","}
+            ] 
+        }
+        
+      },
+      {
+        "mark": {
+            "type": "text",
+            "text": ["Despite having a similar population and more amount of testing as compared to ", " Massachusetts, ", "Tennessee still has less recoveries"],
+            "size": 12,
+            "width": 50, 
+            "fontWeight": "normal",
+            "font": "aerial",
+            "align":"left"
+        },
+        "encoding": {
+            "color":{"value": "black"},
+            "x":{"value": 30},
+            "y": {"value": 220}
+        }
+      },
+      {
+        "data": {"values":[{}]},
+        "mark": {"type": "rule", "color":"black", "size": 1},
+        "encoding": {
+            "x": {
+                "value": 50,
+                "type": "quantitative",
+                "scale": {"domain":[0,100]}
+            },
+            "y": {
+                "value": 310,
+                "type": "quantitative",
+                "scale": {"domain": [0, 100]}
+            },
+            "x2": {"value": 60},
+            "y2": {"value": 255}
+        }
+      },
+      {
+        "data": {"values":[{}]},
+        "mark": {"type": "rule", "color":"black", "size": 1},
+        "encoding": {
+            "x": {
+                "value": 175,
+                "type": "quantitative",
+                "scale": {"domain":[0,100]}
+            },
+            "y": {
+                "value": 320,
+                "type": "quantitative",
+                "scale": {"domain": [0, 100]}
+            },
+            "x2": {"value": 60},
+            "y2": {"value": 255}
+        }
+      }
+
+    ]
+    
+    
+}

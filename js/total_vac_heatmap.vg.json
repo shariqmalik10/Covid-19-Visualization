@@ -1,0 +1,77 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "url": "https://raw.githubusercontent.com/shariqmalik10/Assignment2-Visualization-VegaLite/master/data/us_1y.csv"
+    },
+    "title": {
+        "text": "Daily vaccinations by State",
+        "fontSize": 18,
+        "dy": -17
+    },
+    "background":"lightblue",
+    "config": {
+        "view": {
+            "strokeWidth": 0,
+            "step": 13
+        },
+        "axis": {"domain": false}
+    },
+    "height": 500,
+    "width":750,
+    "params": [
+        {
+            "name":"select_state",
+            "bind":{
+                "input": "select",
+                "options":[null, "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississipi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"],
+
+                "labels":["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississipi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"],
+
+                "name": "Select State: "
+            }
+        }
+    ],
+    "transform": [
+        {
+            "filter": "(select_state == null && datum.location == 'Alabama') || (select_state == 'New York' && datum.location == 'New York State')|| datum.location == select_state"
+        }
+    ],
+    "mark":"rect",
+    "encoding": {
+        "x":{
+            "field": "date",
+            "timeUnit": "date",
+            "type": "ordinal",
+            "title": "Day",
+            "axis":{
+                "labelAngle": 0,
+                "format": "%e"
+            }
+        },
+        "y": {
+            "field": "date",
+            "timeUnit": "month",
+            "type": "ordinal",
+            "title": "Month"
+        },
+        "color":{
+            
+            "field": "daily_vaccinations",
+            "type": "quantitative",
+            "legend":{
+                "title":"Daily Vaccinations"
+            },
+            "scale":{"scheme": "yellowgreenblue"} 
+        },
+        "tooltip":[
+            {"field": "daily_vaccinations", "type": "quantitative", "format":",", "title":"Daily Vaccinations"}
+        ]
+        
+    }
+
+        
+        
+    
+   
+
+}

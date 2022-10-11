@@ -1,0 +1,84 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "url": "https://raw.githubusercontent.com/shariqmalik10/Assignment2-Visualization-VegaLite/master/data/g7_daily.csv"
+    },
+    "width": 500,
+    "height": 500,
+    "title": {
+        "text": "G7 countries daily vaccination rates (per million)",
+        "fontSize": 18,
+        "dy": -17
+    },
+    "background":"lightblue",
+    "encoding": {
+        "x": {"field": "date", "type": "temporal", "title": "date", "axis":{"grid": false}}
+    },
+
+
+    "layer": [
+        {
+            "encoding": {
+                "color":{
+                    "condition":{
+                        "param": "hover",
+                        "field": "country",
+                        "type": "nominal"
+                    },
+                    "value":"grey"
+                },
+                "opacity": {
+                    "condition":{"param": "hover", "value":1},
+                    "value":0.2
+                },
+                "y": {"field": "daily_vaccinations_per_million", "type": "quantitative", "title": "Daily Vaccinations / million", "axis":{"grid": false}}
+            },
+            "layer": [
+                {"mark": "line"},
+                {"transform": [{"filter": {"param": "hover", "empty": false}}], "mark": "point"}
+            ]
+        },
+        {
+            "transform": [{"pivot": "country", "value": "daily_vaccinations_per_million", "groupby": ["date"]}],
+            "mark":"rule",
+            "encoding": {
+                "opacity":{
+                    "condition":{
+                        "value": 0.3,
+                        "param": "hover",
+                        "empty": false
+                    },
+                    "value":0
+                },
+            "tooltip": [
+                    {"field": "Canada", "type": "quantitative", "format":","},
+                    {"field": "France", "type": "quantitative","format":","},
+                    {"field": "Germany", "type": "quantitative", "format":","},
+                    {"field": "Italy", "type":"quantitative", "format":","},
+                    {"field": "Japan", "type": "quantitative", "format":","},
+                    {"field": "United Kingdom", "type": "quantitative", "format": ","},
+                    {"field": "United States of America", "type": "quantitative", "format": ","}
+                ]
+            },
+            "params": [
+                {
+                    "name": "hover",
+                    "select":{
+                        "type": "point",
+                        "fields": ["date"],
+                        "nearest": true,
+                        "on": "mouseover",
+                        "clear": "mouseout"
+                    }
+                },
+                {
+                    "name": "Country",
+                    "select": {"type": "point", "fields": ["country"]},
+                    "bind": "legend"
+
+                }
+            ]
+        }
+    ]
+
+}
