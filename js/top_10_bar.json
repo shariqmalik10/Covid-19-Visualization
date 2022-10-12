@@ -7,7 +7,7 @@
   },
   "description": "A simple bar chart with embedded data.",
   "width": 500,
-  "background": "lightblue",
+  "background": "honeydew",
   "height": {"step": 50},
   "data": {
     "url": "https://raw.githubusercontent.com/shariqmalik10/Assignment2-Visualization-VegaLite/master/data/top10_maxvac.csv"

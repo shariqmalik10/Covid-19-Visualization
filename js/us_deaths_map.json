@@ -7,7 +7,7 @@
     },
     "width": 750,
     "height": 400,
-    "background": "lightblue",
+    "background": "honeydew",
     "projection": {"type": "albersUsa"},
     "layer":[
       {

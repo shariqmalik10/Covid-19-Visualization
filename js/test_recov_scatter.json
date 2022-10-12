@@ -8,7 +8,7 @@
     "description": "A scatterplot to show the relationship between testing and recoveries",
     "width": 750,
     "height": 400,
-    "background":"lightblue",
+    "background":"honeydew",
     "data":{
         "url": "https://raw.githubusercontent.com/shariqmalik10/Assignment2-Visualization-VegaLite/master/data/USA_covid_cleaned.csv"
     },

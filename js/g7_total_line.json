@@ -10,7 +10,7 @@
         "fontSize": 18,
         "dy": -17
     },
-    "background": "lightblue",
+    "background": "honeydew",
     "encoding": {
         "x": {"field": "date", "type": "temporal", "title": "date", "axis":{"grid": false}}
     },

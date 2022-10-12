@@ -8,7 +8,7 @@
     "width": 1600,
     "height": 700,
     "projection":{"type": "equalEarth"},
-    "background":"lightblue",
+    "background":"honeydew",
     "layer":[
         {
             "data": {"sphere": true},
