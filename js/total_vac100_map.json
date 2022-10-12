@@ -5,7 +5,7 @@
         "fontSize": 18,
         "dy": -17
     },
-    "width": 1600,
+    "width": 1700,
     "height": 700,
     "projection":{"type": "equirectangular"},
     "background":"honeydew",
