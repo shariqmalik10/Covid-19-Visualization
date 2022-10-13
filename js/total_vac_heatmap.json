@@ -17,7 +17,7 @@
         "axis": {"domain": false}
     },
     "height": 450,
-    "width":550,
+    "width":600,
     "params": [
         {
             "name":"select_state",
@@ -64,7 +64,7 @@
             "scale":{"scheme": "yellowgreenblue"} 
         },
         "tooltip":[
-            {"field": "daily_vaccinations", "type": "quantitative", "format":",", "title":"Daily Vax"}
+            {"field": "daily_vaccinations", "type": "quantitative", "format":",", "title":"Daily Vaccinations"}
         ]
         
     }
