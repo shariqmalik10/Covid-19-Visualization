@@ -22,7 +22,7 @@
                     "type":"nominal",
                     "scale":{
                         "domain":["Canada", "France", "Germany", "Italy", "Japan", "United Kingdom", "United States of America"],
-                        "range":["darkblue", "orange", "red", "lightblue", "green", "yellow", "purple"]
+                        "range":["darkblue", "orange", "red", "brown", "green", "darkcyan", "purple"]
                     },
                     "legend": null
                 },
@@ -72,7 +72,46 @@
                     }
                 }
             ]
-        }
+        },
+        {
+            
+            "mark":{
+                "type": "text",
+                "text":["The United States of America has taken a huge step forward against COVID-19 by "," increasing the number of vaccinations it is providing its citizens and has become "," G7 country with the most total vaccinations"],
+                "align": "right",
+                "baseline": "middle",
+                "dx": 2.7,
+                "dy": 13,
+                "fontSize": 11,
+                "fontStyle": "italic",
+                "fontWeight":"normal"
+            },
+            "encoding": {
+                "color":{"value": "black"},
+                "x":{"value": 490},
+                "y": {"value": 20}
+            }
+            
+        },
+        {
+            "data": {"values":[{}]},
+            "mark": {"type": "rule", "color":"black", "size": 1},
+            "encoding": {
+                "x": {
+                    "value": 210,
+                    "type": "quantitative",
+                    "scale": {"domain":[0,100]}
+                },
+                "y": {
+                    "value": 230,
+                    "type": "quantitative",
+                    "scale": {"domain": [0, 100]}
+                },
+                "x2": {"value": 120},
+                "y2": {"value": 60}
+            }
+          }
+        
     ]
 
 }
