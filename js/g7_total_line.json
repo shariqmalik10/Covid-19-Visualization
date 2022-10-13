@@ -3,7 +3,7 @@
     "data": {
         "url": "https://raw.githubusercontent.com/shariqmalik10/Assignment2-Visualization-VegaLite/master/data/g7_total.csv"
     },
-    "width": 500,
+    "width": 600,
     "height": 500,
     "title": {
         "text": "G7 countries total Vaccinations",
@@ -18,17 +18,19 @@
         {
             "encoding": {
                 "color":{
-                    "condition":{
-                        "param": "hover",
-                        "field": "country",
-                        "type": "nominal"
+                    "field":"country",
+                    "type":"nominal",
+                    "scale":{
+                        "domain":["Canada", "France", "Germany", "Italy", "Japan", "United Kingdom", "United States of America"],
+                        "range":["darkblue", "orange", "red", "lightblue", "green", "yellow", "purple"]
                     },
-                    "value":"grey"
+                    "legend": null
                 },
                 "opacity": {
-                    "condition":{"param": "hover", "value":1},
+                    "condition":{"param": "select", "value":1},
                     "value":0.2
                 },
+               
                 "y": {"field": "total_vaccinations", "type": "quantitative", "title": "Total Vaccinations", "axis":{"grid": false}}
             },
             "layer": [
@@ -67,6 +69,14 @@
                         "on": "mouseover",
                         "clear": "mouseout"
                     }
+                },
+                {
+                    "name": "select",
+                    "select":{
+                        "type": "point",
+                        "fields": ["country"]
+                    },
+                    "bind":"legend"
                 }
             ]
         }

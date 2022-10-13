@@ -3,7 +3,7 @@
     "data": {
         "url": "https://raw.githubusercontent.com/shariqmalik10/Assignment2-Visualization-VegaLite/master/data/g7_daily.csv"
     },
-    "width": 500,
+    "width": 600,
     "height": 500,
     "title": {
         "text": "G7 countries daily vaccination rates (per million)",
@@ -20,17 +20,20 @@
         {
             "encoding": {
                 "color":{
-                    "condition":{
-                        "param": "hover",
-                        "field": "country",
-                        "type": "nominal"
-                    },
-                    "value":"grey"
+                    "field":"country",
+                    "type":"nominal",
+                    "scale":{
+                        "domain":["Canada", "France", "Germany", "Italy", "Japan", "United Kingdom", "United States of America"],
+                        "range":["darkblue", "orange", "red", "lightblue", "green", "yellow", "purple"]
+                    }
+                    
                 },
+                
                 "opacity": {
                     "condition":{"param": "hover", "value":1},
                     "value":0.2
                 },
+                
                 "y": {"field": "daily_vaccinations_per_million", "type": "quantitative", "title": "Daily Vaccinations / million", "axis":{"grid": false}}
             },
             "layer": [
@@ -70,12 +73,6 @@
                         "on": "mouseover",
                         "clear": "mouseout"
                     }
-                },
-                {
-                    "name": "Country",
-                    "select": {"type": "point", "fields": ["country"]},
-                    "bind": "legend"
-
                 }
             ]
         }
