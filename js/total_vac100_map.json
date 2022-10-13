@@ -8,7 +8,7 @@
     "width": 1600,
     "height": 700,
     "projection":{"type": "equalEarth"},
-    "background":"honeydew",
+    "background":"lightblue",
     "layer":[
         
         {
@@ -44,7 +44,8 @@
         "encoding": {
             "color":{
                 "field": "People Vaccinated Per 100", 
-                "type": "quantitative"
+                "type": "quantitative",
+                "legend": {"offset":-130, "orient":"none", "legendY":470, "legendX":60}
             },
             
             "tooltip": [
