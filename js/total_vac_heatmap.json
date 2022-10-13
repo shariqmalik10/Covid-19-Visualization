@@ -64,7 +64,7 @@
             "scale":{"scheme": "yellowgreenblue"} 
         },
         "tooltip":[
-            {"field": "daily_vaccinations", "type": "quantitative", "format":",", "title":"Daily Vaccinations"}
+            {"field": "daily_vaccinations", "type": "quantitative", "format":",", "title":"Daily Vax"}
         ]
         
     }
