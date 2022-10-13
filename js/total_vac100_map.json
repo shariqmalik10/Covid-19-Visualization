@@ -8,8 +8,23 @@
     "width": 1600,
     "height": 700,
     "projection":{"type": "equalEarth"},
-    "background":"aliceblue",
+    "background":"honeydew",
     "layer":[
+        {
+            "data": {
+                "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/7_others/oceans.topojson",
+                "format": {"type": "topojson", "feature": "oceans"}
+              },
+              "mark": {"type": "geoshape", "fill": "skyblue"}
+        },
+        {
+            "data":{
+                "url":"https://raw.githubusercontent.com/shariqmalik10/Assignment2-Visualization-VegaLite/master/js/ne_110m_graticules_30.topojson",
+                "format":{"type": "topojson", "feature": "ne_110m_graticules_30"}
+            },
+            "mark":{"type": "geoshape", "fill": null, "stroke":"lightslategray"}
+        },
+        
         
         {
             "data":{
@@ -45,7 +60,7 @@
             "color":{
                 "field": "People Vaccinated Per 100", 
                 "type": "quantitative",
-                "legend": {"offset":-130, "orient":"none", "legendY":470, "legendX":60}
+                "legend": {"offset":-130, "orient":"none", "legendY":30, "legendX":20}
             },
             
             "tooltip": [
