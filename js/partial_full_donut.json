@@ -42,7 +42,7 @@
 
     "encoding": {
         "theta": {"field": "value", "type": "quantitative", "stack":true},
-        "color": {"field": "key", "type": "nominal", "scale":{"domain":["Fully Vaccinated", "Partially Vaccinated"], "range":["lightgreen", "darkgreen"]}},
+        "color": {"field": "key", "type": "nominal", "scale":{"domain":["Fully Vaccinated", "Partially Vaccinated"], "range":["orange", "coral"]}},
         "tooltip" : [
             {"field": "country", "type": "nominal", "title":"Country"},
             {"field": "people_fully_vaccinated", "type": "quantitative", "title": "Fully Vaccinated", "format":","},

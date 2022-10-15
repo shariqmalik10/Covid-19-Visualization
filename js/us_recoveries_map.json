@@ -35,7 +35,7 @@
          "color":{
            "field":"Total Recoveries",
            "type": "quantitative",
-           "scale": {"scheme": "greens"}
+           "scale": {"scheme": "goldorange"}
           },
           "tooltip": [
             {"field": "State Name", "type": "nominal", "title": "State"},

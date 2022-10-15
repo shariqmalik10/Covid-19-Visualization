@@ -22,7 +22,7 @@
                     "type":"nominal",
                     "scale":{
                         "domain":["Canada", "France", "Germany", "Italy", "Japan", "United Kingdom", "United States of America"],
-                        "range":["darkblue", "orange", "red", "brown", "green", "darkcyan", "purple"]
+                        "range":["darkblue", "darkgray", "red", "brown", "green", "darkcyan", "purple"]
                     },
                     "legend": null
                 },
