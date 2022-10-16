@@ -9,6 +9,7 @@
     "height": 400,
     "background": "honeydew",
     "projection": {"type": "albersUsa"},
+    "config": {"view":{"stroke": null}},
     "layer":[
       {
         "data":{
