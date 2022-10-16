@@ -9,6 +9,7 @@
     "height": 700,
     "projection":{"type": "equalEarth"},
     "background":"honeydew",
+    "config": {"view":{"stroke": null}},
     "layer":[
         {
             "data": {
